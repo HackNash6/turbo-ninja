@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
   get 'static_pages/home'
 
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
       post 'gotcha' => 'reporting_dogs#gotcha'
     end
   end
+  # job management
+  mount Resque::Server.new, at: "/resque"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
