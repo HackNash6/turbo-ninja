@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 
   devise_for :users
+  get 'profile' => 'users#show', :as => 'user_show'
+
   resources :thing_types
   resources :things
 
