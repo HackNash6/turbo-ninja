@@ -16,10 +16,8 @@ Rails.application.routes.draw do
   # Reporting missing dogs
   namespace :api do
     namespace :v1 do
-      post 'gotcha' => 'reporting_dogs#gotcha'
+      match '/gotcha' => 'report_dogs#gotcha', :via => :post
     end
   end
-  # job management
-  mount Resque::Server.new, at: "/resque"
 
 end

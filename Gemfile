@@ -49,5 +49,3 @@ gem 'underscore-rails', '1.7.0'
 # Testing
 gem 'capybara'
 
-# Rescue queueing service
-gem 'resque', :require => "resque/server"
