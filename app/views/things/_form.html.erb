@@ -12,36 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :uuid %><br>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    Beacon UUID:<br>
     <%= f.text_field :uuid %>
-  </div>
-  <div class="field">
-    <%= f.label :isMissing %><br>
-    <%= f.check_box :isMissing %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :precision %><br>
-    <%= f.text_field :precision %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
     <%= f.label :age %><br>
     <%= f.text_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :isMissing %><br>
+    <%= f.check_box :isMissing %>
   </div>
   <div class="actions">
     <%= f.submit %>
