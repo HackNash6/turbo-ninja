@@ -44,7 +44,7 @@ gem 'devise'
 # Foundation for UI
 gem 'foundation-rails'
 gem 'gmaps4rails'
-gem 'underscore-rails'
+gem 'underscore-rails', '1.7.0'
 
 # Testing
 gem 'capybara'
