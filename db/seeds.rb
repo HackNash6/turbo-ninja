@@ -10,4 +10,6 @@ ThingType.create(name: 'Dog')
 ThingType.create(name: 'Cat')
 
 # Developing Stuff
-User.create(email: 'dev@dev.com', password: 'password', password_confirmation: 'password');
+user = User.create(email: 'dev@dev.com', password: 'password', password_confirmation: 'password');
+cat = Thing.create(name: 'Maui')
+user.things << cat
