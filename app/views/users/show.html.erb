@@ -90,7 +90,6 @@
   <!-- Add thing info! -->
   <strong><%= t.name.pluralize(2) %></strong>
   <ul>
-
     <% if things[:t] == 1 %>
       <% if @user.things.count == 0 %>
         <%@user.things.each do |thing| %>
@@ -100,7 +99,7 @@
         <% end %>
       <% end %>
     <% else %>
-      <li><%= link_to "Register a #{t.name.singularize()}!", new_thing_path %></li>
+      <li><%= link_to "Register a #{t.name.singularize()}!", new_thing_path(@user.id, t.id) %></li>
     <% end %>
   </ul>
 <% end %>
