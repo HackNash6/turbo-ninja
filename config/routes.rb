@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get 'profile/map' => 'users#map', :as => 'pet_map'
 
   resources :thing_types
-  resources :things
+
+  # Things
+  get 'things/new/:owner_id/:type_id' => 'things#new', :as => 'new_thing'
+  resources :things, :except => :new
 
   root 'static_pages#home'
 

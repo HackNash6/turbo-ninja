@@ -26,6 +26,37 @@ handler.buildMap({ provider: {
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
 });
+
+var addPetLocation = function(name, lat, lon, precision) {
+
+    var circleOptions = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.5,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.5,
+        map: handler,
+        center: new google.maps.LatLng(lat, lon),
+        radius: precision * 100
+    };
+
+    return new google.maps.Circle(circleOptions);
+};
+
+var requestPetLocations = function() {
+    console.log('updating stuff');
+    // TODO
+    setTimeout(requestPetLocations, 500);
+};
+
+
+// Test the adding of pet locations
+// TODO
+addPetLocation("test", 0, 0, 1000);
+
+// Test the adding of pet locations
+requestPetLocations();
+
 </script>
 <!-- Add pet info! -->
 <!-- TODO -->

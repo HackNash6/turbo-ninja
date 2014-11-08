@@ -6,8 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+ThingType.delete_all
 ThingType.create(name: 'Dog')
-ThingType.create(name: 'Cat')
+_cat = ThingType.create(name: 'Cat')
 
 # Developing Stuff
-User.create(email: 'dev@dev.com', password: 'password', password_confirmation: 'password');
+user = User.create(email: 'dev@dev.com', password: 'password', password_confirmation: 'password');
+cat = Thing.create(name: 'Maui')
+cat.thing_type = _cat
+user.things << cat

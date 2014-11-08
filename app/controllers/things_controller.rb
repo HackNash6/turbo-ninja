@@ -13,9 +13,15 @@ class ThingsController < ApplicationController
   def show
   end
 
-  # GET /things/new
+  # GET /things/new/1
   def new
+    owner = User.find(params[:owner_id])
+    @thing_type = ThingType.find(params[:type_id])
+    puts "owner is #{owner.name}"
+    puts "thing type is #{@thing_type.name}"
     @thing = Thing.new
+    @thing.user = owner
+    @thing.thing_type = @thing_type
   end
 
   # GET /things/1/edit
@@ -70,6 +76,6 @@ class ThingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thing_params
-      params.require(:thing).permit(:uuid, :isMissing, :latitude, :longitude, :precision, :description, :name, :age)
+      params.require(:thing).permit(:user_id, :thing_type_id, :uuid, :isMissing, :latitude, :longitude, :precision, :description, :name, :age)
     end
 end
