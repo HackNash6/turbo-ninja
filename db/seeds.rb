@@ -8,3 +8,6 @@
 
 ThingType.create(name: 'Dogs')
 ThingType.create(name: 'Cats')
+
+# Developing Stuff
+User.create(email: 'test@dev.com', password: 'password', password_confirmation: 'password');
