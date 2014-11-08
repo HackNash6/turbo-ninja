@@ -43,6 +43,8 @@ gem 'devise'
 
 # Foundation for UI
 gem 'foundation-rails'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 # Testing
 gem 'capybara'
