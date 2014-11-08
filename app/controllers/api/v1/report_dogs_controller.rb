@@ -3,6 +3,12 @@ require 'json'
 
 class Api::V1::ReportDogsController < ApplicationController
 
+  # Getting locations of all dogs
+  def heel
+    user = User.find(params[:id])
+    @things = user.things.to_a
+  end
+
   # Reporting that a dog has been seen by an app
   def gotcha
     args = JSON.parse(request.body.string)
@@ -17,6 +23,5 @@ class Api::V1::ReportDogsController < ApplicationController
     else
       render :json => {:status => "ERROR"}
     end
-    #puts("Got message: ", request.body.string)
   end
 end
