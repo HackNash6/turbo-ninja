@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108035845) do
+ActiveRecord::Schema.define(version: 20141108161734) do
 
   create_table "thing_types", force: true do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141108035845) do
 
   create_table "things", force: true do |t|
     t.string   "uuid"
-    t.boolean  "isMissing"
+    t.boolean  "isMissing",   default: false
     t.float    "latitude"
     t.float    "longitude"
     t.float    "precision"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141108035845) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phone_number"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
