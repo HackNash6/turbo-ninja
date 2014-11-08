@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   has_many :things
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :name, presence: true
+  validates :phone_number, presence: true
 end

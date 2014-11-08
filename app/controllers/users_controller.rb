@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user
   def show
     @thing = Thing.new
+    @thing.user_id = @user.id
   end
 
   def map

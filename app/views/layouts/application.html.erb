@@ -7,6 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="row">
+  <div class="large-3 columns">
+    <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+  </div>
+  <div class="large-9 columns">
+    <ul class="right button-group">
+        <% if not user_signed_in? %>
+            <li><a href="<%=new_user_session_path%>" class="button">Login</a></li>
+            <li><a href="<%=new_user_registration_path%>" class="button">Sign Up</a></li>
+        <% else %>
+            <li><a href="/" class="button">Home</a></li>
+            <!--<li><%= link_to 'View Map', pet_map_path, class: "button" %></li>-->
+            <% if request.env['PATH_INFO'] == user_show_path %>
+                <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "button" %></li>
+            <% else %>
+                <li><%= link_to 'View Profile', user_show_path, class: "button" %></li>
+            <% end %>
+            <li><%=link_to('Sign out', destroy_user_session_path, :method => :delete, :class => "button")%></li>
+        <% end %>
+    </ul>
+  </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+
 
 <%= yield %>
 
