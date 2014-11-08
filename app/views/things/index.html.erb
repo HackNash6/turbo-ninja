@@ -1,0 +1,39 @@
+<h1>Listing things</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uuid</th>
+      <th>Ismissing</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Precision</th>
+      <th>Description</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @things.each do |thing| %>
+      <tr>
+        <td><%= thing.uuid %></td>
+        <td><%= thing.isMissing %></td>
+        <td><%= thing.latitude %></td>
+        <td><%= thing.longitude %></td>
+        <td><%= thing.precision %></td>
+        <td><%= thing.description %></td>
+        <td><%= thing.name %></td>
+        <td><%= thing.age %></td>
+        <td><%= link_to 'Show', thing %></td>
+        <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
+        <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thing', new_thing_path %>

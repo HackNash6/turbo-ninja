@@ -38,3 +38,11 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Devise 
+gem 'devise'
+
+# Foundation for UI
+gem 'foundation-rails'
+
+# Testing
+gem 'capybara'

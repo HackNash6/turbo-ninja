@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @thing.uuid %>
+</p>
+
+<p>
+  <strong>Ismissing:</strong>
+  <%= @thing.isMissing %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @thing.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @thing.longitude %>
+</p>
+
+<p>
+  <strong>Precision:</strong>
+  <%= @thing.precision %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @thing.description %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @thing.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @thing.age %>
+</p>
+
+<%= link_to 'Edit', edit_thing_path(@thing) %> |
+<%= link_to 'Back', things_path %>
