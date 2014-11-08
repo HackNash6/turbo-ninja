@@ -10,61 +10,20 @@
 
 <div class="row">
 
-  <div class="large-4 columns">
-    <img src="http://placehold.it/400x300&text=[img]" />
-    <h4>This is a content section.</h4>
-    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing
-      rump corned beef.</p>
-  </div>
-
-  <div class="large-4 columns">
-    <!-- <%= render file: 'things/new' %> -->
-    <%= render partial: 'shared/form' %>
-  </div>
-
-</div>
-
-<div class="row">
-  <div class="large-12 columns">
-
-    <div class="panel">
-      <h4>Get in touch!</h4>
-
-      <div class="row">
-        <div class="large-9 columns">
-          <p>We'd love to hear from you, you attractive person you.</p>
-        </div>
-        <div class="large-3 columns">
-          <a href="#" class="radius button right">Contact Us</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<footer class="row">
-  <div class="large-12 columns">
-    <hr/ >
-    <div class="row">
-      <div class="large-6 columns">
-        <p>© People of Akos.</p>
-      </div>
-      <div class="large-6 columns">
-        <ul class="inline-list right">
-          <li><a href="#">About</a>
-          </li>
-          <li><a href="#">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
+      <% @user.things.each do |thing| %>
+          <div class="large-4 columns">
+              <img src="http://placehold.it/400x300&text=[img]" />
+              <h4><%= thing.name %> (<%= thing.thing_type.name %>)</h4>
+              <% if thing.description.nil? or thing.description == "" %>
+                  <p><em><%= "No Description" %></em></p>
+              <% else %>
+                  <p><%= thing.description %></p>
+              <% end %>
+          </div>
+          <!-- Add Report Missing Button -->
+      <% end %>
 <!-- Get thing types -->
-<% things = {} %>
+<!--<% things = {} %>
 <% all_things = ThingType.all.to_a %>
 <% if @user.things.nil? %>
   <% @user.things.each do |t| %>
@@ -72,20 +31,27 @@
   <% end %>
 <% end %>
 
-<% all_things.each do |t| %>
+<% all_things.each do |t| %>-->
   <!-- Add thing info! -->
-  <strong><%= t.name.pluralize(2) %></strong>
-  <ul>
-    <% if things[:t] == 1 %>
+  <!--<strong><%= t.name.pluralize(2) %></strong>-->
+    <!--<% if things[:t] == 1 %>
       <% if @user.things.count == 0 %>
         <%@user.things.each do |thing| %>
           <% if things[:thing.thing_type] == 1 then %> 
-            <li><%= thing.name %> </li>
+            <img src="http://placehold.it/400x300&text=[img]" />
+            <h4><%= thing.name %></h4>
+            <p><%= thing.description %></p>
           <% end %>
         <% end %>
       <% end %>
     <% else %>
-      <li><%= link_to "Register a #{t.name.singularize()}!", new_thing_path(@user.id, t.id) %></li>
     <% end %>
-  </ul>
-<% end %>
+<% end %>-->
+
+  <div class="large-4 columns">
+    <%= render partial: 'shared/form' %>
+  </div>
+
+</div>
+
+

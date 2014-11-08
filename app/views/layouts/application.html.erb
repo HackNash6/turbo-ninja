@@ -5,11 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div class="row">
+    <style type="text/css" media="screen">
+      h1.logo {
+          font-family: 'Open Sans Condensed', sans-serif;
+          font-size: 5em;
+          margin: 0px;
+      }
+        
+    </style>
   <div class="large-3 columns">
-    <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+      <h1 class="logo">GOTCHA!</h1>
   </div>
   <div class="large-9 columns">
     <ul class="right button-group">
@@ -30,11 +39,28 @@
   </div>
 </div>
 
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>-->
 
 
 
 <%= yield %>
 
 </body>
+
+<footer class="row">
+  <div class="large-12 columns">
+    <hr/ >
+    <div class="row">
+      <div class="large-6 columns">
+        <p>© Gotcha! 2014</p>
+      </div>
+      <div class="large-6 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>
