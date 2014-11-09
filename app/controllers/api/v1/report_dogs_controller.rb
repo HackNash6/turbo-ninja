@@ -15,10 +15,14 @@ class Api::V1::ReportDogsController < ApplicationController
     thing = Thing.where(:uuid => args["observedID"]).first
 
     unless thing.nil?
-      thing.latitude = args[:latitude]
-      thing.longitude = args[:longitude]
-      thing.precision = args[:precision]
-      thing.save
+      loc = Location.new
+      loc.thing_id = thing.id
+
+      loc.latitude = args[:latitude]
+      loc.longitude = args[:longitude]
+      loc.precision = args[:precision]
+      thing.locations << loc
+
       render :json => {:status => "SUCCESS"}
     else
       render :json => {:status => "ERROR"}
