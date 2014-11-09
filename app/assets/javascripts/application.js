@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
 //= require underscore
 //= require jquery.purr
 //= require best_in_place
+
+$(function(){ $(document).foundation(); });

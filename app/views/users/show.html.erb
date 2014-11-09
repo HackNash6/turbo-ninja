@@ -6,6 +6,15 @@
       <strong>Phone Number:</strong> <%= @user.phone_number %>
     </p>
   </div>
+  <div class="large-4 columns">
+      <a href="#" data-reveal-id="newThing" class="radius button" >Register New Pet</a>
+  <div id="newThing" class="reveal-modal small" data-reveal>
+      <a class="close-reveal-modal">x</a>
+      <h1>Tell Us About Your Pet!</h1>
+    <%= render partial: 'shared/form' %>
+  </div>
+
+  </div>
 </div> 
 
 <div class="row">
@@ -13,9 +22,9 @@
       <% @user.things.each do |thing| %>
           <div class="large-4 columns">
               <% if thing.avatar.nil? %>
-                  <%= image_tag thing.thing_type.avatar.url %>
+                  <%= image_tag thing.thing_type.avatar.url(:preview) %>
               <% else %>
-                  <%= image_tag thing.avatar.url %>
+                  <%= image_tag thing.avatar.url(:preview) %>
               <% end %>
               <h4><%= thing.name %> (<%= thing.thing_type.name %>)</h4>
               <% if thing.description.nil? or thing.description == "" %>
@@ -23,6 +32,7 @@
               <% else %>
                   <p><%= thing.description %></p>
               <% end %>
+              <%= link_to 'Report Missing', '#', :class => "button alert" %>
           </div>
           <!-- Add Report Missing Button -->
       <% end %>
@@ -52,123 +62,4 @@
     <% end %>
 <% end %>-->
 
-  <div class="large-4 columns">
-    <%= render partial: 'shared/form' %>
-  </div>
-
 </div>
-
-
-     
-
-<div class="row">
-    <div class="large-12 columns">
-        <div class="panel">
-            <h1>Feed Template</h1>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-
-
-    <div class="large-3 columns ">
-        <div class="panel">
-            <a href="#"><img src="http://placehold.it/300x240&text=[img]"/></a>
-            <h5><a href="#">Your Name</a></h5>
-            <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
-                <section class="section">
-                    <h5 class="title"><a href="#">Section 1</a></h5>
-                </section>
-                <section class="section">
-                    <h5 class="title"><a href="#">Section 2</a></h5>
-                </section>
-                <section class="section">
-                    <h5 class="title"><a href="#">Section 3</a></h5>
-                </section>
-                <section class="section">
-                    <h5 class="title"><a href="#">Section 4</a></h5>
-                </section>
-                <section class="section">
-                    <h5 class="title"><a href="#">Section 5</a></h5>
-                </section>
-                <section class="section">
-                    <h5 class="title"><a href="#">Section 6</a></h5>
-                </section>
-            </div>
-
-        </div>
-    </div>
-
-
-
-    <div class="large-6 columns">
-
-
-        <div class="row">
-            <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
-            <div class="large-10 columns">
-                <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-                <ul class="inline-list">
-                    <li><a href="">Reply</a></li>
-                    <li><a href="">Share</a></li>
-                </ul>
-
-
-                <h6>2 Comments</h6>
-                <div class="row">
-                    <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
-                    <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-                </div>
-                <div class="row">
-                    <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
-                    <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-                </div>
-            </div>
-        </div>
-
-
-        <hr/>
-
-
-        <div class="row">
-            <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
-            <div class="large-10 columns">
-                <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-                <ul class="inline-list">
-                    <li><a href="">Reply</a></li>
-                    <li><a href="">Share</a></li>
-                </ul>
-            </div>
-        </div>
-
-
-        <hr/>
-
-
-        <div class="row">
-            <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
-            <div class="large-10 columns">
-                <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-                <ul class="inline-list">
-                    <li><a href="">Reply</a></li>
-                    <li><a href="">Share</a></li>
-                </ul>
-
-
-                <h6>2 Comments</h6>
-                <div class="row">
-                    <div class="large-2 columns small-3"><img src="http://placehold.it/50x50&text=[img]"/></div>
-                    <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-
-
-    <aside class="large-3 columns hide-for-small">
-        <p><img src="http://placehold.it/300x440&text=[ad]"/></p>
-        <p><img src="http://placehold.i

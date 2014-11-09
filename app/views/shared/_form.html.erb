@@ -35,11 +35,8 @@
     <%= f.label :age %><br>
     <%= f.text_field :age %>
   </div>
-  <div class="field">
-    <%= f.check_box :isMissing %>
-    Missing? 
-  </div>
   <%= f.hidden_field :user_id, :value => @user.id%>
+  <%= f.hidden_field :isMissing, :value => false %>
   <div class="actions">
       <%= f.submit :class => "button"%>
   </div>
