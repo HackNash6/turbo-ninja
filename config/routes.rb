@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       match '/gotcha' => 'report_dogs#gotcha', :via => :post
-      get '/heel/:id' => 'report_dogs#heel'
+      get '/heel/:id' => 'report_dogs#heel', :as => 'get_things'
     end
   end
 

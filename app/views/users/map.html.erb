@@ -25,6 +25,8 @@
   var latitude, longitude;
   var left, right, floor, ceil;
   var circles = {};
+  var things = {};
+
 $(function() {
     handler = Gmaps.build('Google');
     var map = handler.buildMap({ provider: {
@@ -87,9 +89,20 @@ $(function() {
     };
 
     var requestPetLocations = function() {
-        console.log('updating stuff');
-        addPetLocation('test', latitude, longitude, 100);
-        setTimeout(requestPetLocations, 1500);
+        $.ajax({
+            url: '<%= api_v1_get_things_path(current_user.id)%>.json', 
+                cache: false})
+            .success( function (json) {
+                for (var i = json.length-1; i >= 0; i--) {
+                    things[json[i].uuid] = json[i];
+                    if (json[i].latitude !== null && json[i].latitude !== null
+                            && json[i].precision !== null) {
+                        addPetLocation(json[i].uuid, json[i].latitude, json[i].longitude, json[i].precision);
+                    }
+                }
+
+                setTimeout(requestPetLocations, 1500);
+            })
     };
 
     // Center the map
