@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141109031237) do
     t.float    "precision"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "thing_id"
   end
 
   create_table "thing_types", force: true do |t|

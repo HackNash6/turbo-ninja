@@ -11,14 +11,14 @@
 
 
 
-<div class="row">
+<!--<div class="row">
     <div class="large-4 columns">
         <img src="http://placehold.it/400x300&text=[img]"/>
         <h4>This is a content section.</h4>
         <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
     </div>
 
-</div>
+    </div>-->
 
 <script type="text/javascript" charset="utf-8">
   // Map location
@@ -45,12 +45,17 @@ $(function() {
         ceil = longitude - .5;
         floor = longitude + .5;
 
+        var circle;
         for (var i = keys.length-1; i >= 0; i--) {
 
-            left = Math.min(circles[keys[i]].center.k-r, left);
-            right = Math.max(circles[keys[i]].center.k+r, right);
-            ceil = Math.min(circles[keys[i]].center.A-r, ceil);
-            floor = Math.max(circles[keys[i]].center.A+r, floor);
+            for (var k = circles[keys[i]].length-1; i >= 0; i--) {
+                circle = circles[keys[i]][k];
+
+                left = Math.min(circle.center.k-r, left);
+                right = Math.max(circle.center.k+r, right);
+                ceil = Math.min(circle.center.A-r, ceil);
+                floor = Math.max(circle.center.A+r, floor);
+            }
         }
 
         bounds.extend(new google.maps.LatLng(ceil, left));
@@ -59,29 +64,50 @@ $(function() {
         console.log('setting bounds to ', ceil, ',', left, ' and ', floor, ',', right);
     };
 
-    var addPetLocation = function(name, lat, lon, precision) {
+    var addPetLocations = function(uuid) {
+        var locations = things[uuid].locations;
+        var i;
 
-        console.log('adding pet location at ', lat, ', ', lon);
-        console.log('map is ', handler.map);
-        var circleOptions = {
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.5,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.5,
-            map: handler.getMap(),
-            center: new google.maps.LatLng(lat, lon),
-            radius: precision * 100
-        };
+        // Make sure it has something to plot
+        if (!locations.length) {
+            return;
+        }
 
-        if (circles[name]) {
-            circles[name].setMap(null);
+        // Remove Previous Pet Locations
+        if (!circles[uuid]) {
+            circles[uuid] = [];
+        }
+
+        for (i = circles[uuid].length-1; i >= 0; i--) {
+            circles[uuid][i].setMap(null);
+        }
+
+        console.log('adding pet');
+        // Plot each location
+        circles[uuid] = [];
+        var circleOptions;
+        var lat;
+        var lon;
+        for (i = locations.length-1; i >= 0; i--) {
+            lat = locations[i].latitude;
+            lon = locations[i].longitude;
+            circleOptions = {
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.5,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.5,
+                map: handler.getMap(),
+                center: new google.maps.LatLng(lat, lon),
+                radius: locations[i].precision * 100
+            };
+
+            circles[uuid].push(new google.maps.Circle(circleOptions));
         }
 
         // Check if we should adjust map range
         updateMapView();
 
-        return circles[name] = new google.maps.Circle(circleOptions);
         //var marker = new google.maps.Marker({
             //position: new google.maps.LatLng(lat, lon),
             //map: map,
@@ -93,12 +119,13 @@ $(function() {
             url: '<%= api_v1_get_things_path(current_user.id)%>.json', 
                 cache: false})
             .success( function (json) {
-                for (var i = json.length-1; i >= 0; i--) {
-                    things[json[i].uuid] = json[i];
-                    if (json[i].latitude !== null && json[i].latitude !== null
-                            && json[i].precision !== null) {
-                        addPetLocation(json[i].uuid, json[i].latitude, json[i].longitude, json[i].precision);
-                    }
+                var pets = json.things;
+                var locs;
+
+                for (var i = pets.length-1; i >= 0; i--) {
+                    things[pets[i].uuid] = pets[i];
+
+                    addPetLocations(pets[i].uuid);
                 }
 
                 setTimeout(requestPetLocations, 1500);
@@ -126,7 +153,6 @@ $(function() {
 
 
     // Test the adding of pet locations
-    //addPetLocation("test", 0, 0, 1000);
 
     // Test the adding of pet locations
     
