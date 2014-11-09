@@ -11,20 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108180805) do
+ActiveRecord::Schema.define(version: 20141109031237) do
+
+  create_table "locations", force: true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "precision"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "thing_types", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "things", force: true do |t|
     t.string   "uuid"
-    t.boolean  "isMissing",     default: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.float    "precision"
+    t.boolean  "isMissing",           default: false
     t.string   "description"
     t.string   "name"
     t.integer  "age"
@@ -32,6 +42,10 @@ ActiveRecord::Schema.define(version: 20141108180805) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "thing_type_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "users", force: true do |t|

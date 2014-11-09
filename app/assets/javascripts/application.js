@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require underscore
+//= require jquery.purr
+//= require best_in_place

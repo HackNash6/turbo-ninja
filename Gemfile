@@ -45,7 +45,10 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'gmaps4rails'
 gem 'underscore-rails', '1.7.0'
+gem 'best_in_place'
 
 # Testing
 gem 'capybara'
+
+gem 'paperclip'
 

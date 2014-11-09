@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :locations
+
   get 'static_pages/home'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
